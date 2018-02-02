@@ -9,6 +9,7 @@ import {HomePage} from '../pages/home/home';
 import {PostService} from '../services/post.service';
 import {PostDetailsPage} from '../pages/post-details/post-details';
 import {CreatePostPage} from '../pages/create-post/create-post';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {CreatePostPage} from '../pages/create-post/create-post';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -31,6 +33,7 @@ import {CreatePostPage} from '../pages/create-post/create-post';
   providers: [
     StatusBar,
     SplashScreen,
+    HttpClient,
     PostService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
