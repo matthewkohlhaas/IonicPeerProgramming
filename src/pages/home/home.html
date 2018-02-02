@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <button padding-left padding-right ion-item *ngFor="let post of postService.getPosts()"
+    <button padding-left padding-right ion-item *ngFor="let post of posts"
             (click)="openPostDetailPage(post)">
       <p>{{post.author}}:</p>
       <h2>{{post.title}}</h2>
