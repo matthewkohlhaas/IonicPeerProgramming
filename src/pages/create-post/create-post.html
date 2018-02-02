@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Create a New Post</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Author</ion-label>
+      <ion-input type="text" [(ngModel)]="author"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item no-padding margin-left>
+      <ion-label floating>Content</ion-label>
+      <ion-textarea rows="4" [(ngModel)]="content"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="createPost()">
+    Create Post
+  </button>
+</ion-content>

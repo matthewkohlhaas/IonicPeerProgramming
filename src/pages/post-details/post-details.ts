@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavParams} from 'ionic-angular';
 import {Post} from '../../model/post';
 
 @Component({
@@ -10,7 +10,7 @@ export class PostDetailsPage {
 
   private post: Post;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navParams: NavParams) {
     this.post = navParams.get('post');
   }
 
