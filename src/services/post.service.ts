@@ -38,7 +38,15 @@ export class PostService {
     ];
   }
 
-  getPosts() {
+  public getPosts(): Post[] {
     return this.posts;
+  }
+
+  public createPost(author: string, title: string, content: string): void {
+    const post: Post = new Post();
+    post.author = author;
+    post.title = title;
+    post.content = content;
+    this.posts.push(post);
   }
 }
