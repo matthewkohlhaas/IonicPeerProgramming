@@ -1,18 +1,15 @@
 <ion-header>
-  <ion-navbar color="secondary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Techstr</ion-title>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button padding-left padding-right ion-item *ngFor="let post of posts"
-            (click)="openPostDetailPage(post)">
-      <p>{{post.author}}:</p>
-      <h2>{{post.title}}</h2>
-    </button>
-  </ion-list>
+<ion-content padding>
+  <div id="topButtons">
+    <button ion-button (click)="signIn()" item-left>Sign in</button>
+    <button ion-button (click)="reg()" item-left>Register</button>
+    <button ion-button (click)="guest()" item-left>Quest</button>
+  </div>
 </ion-content>

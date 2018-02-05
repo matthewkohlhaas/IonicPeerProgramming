@@ -3,38 +3,31 @@ import {AlertController, NavController} from 'ionic-angular';
 import {PostService} from '../../services/post.service';
 import {PostDetailsPage} from '../post-details/post-details';
 import {Post} from '../../model/post';
+import {LoginPage} from "../login/login";
+import {RegisterPage} from "../register/register";
+import {FrontPage} from "../front/front";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  private posts: Post[];
+  constructor(public navCtrl: NavController) {
 
-  constructor(
-    public navCtrl: NavController,
-    public alertController: AlertController,
-    private postService: PostService
-  ) {}
+  }
+  signIn() {
+    this.navCtrl.push(LoginPage);
 
-  ngOnInit(): void {
-    this.posts = [];
-
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = Object.keys(posts).map(key => posts[key]);
-    }, err => {
-      this.alertController.create({
-        title: 'Failed to Load Posts',
-        subTitle: 'App failed to connect to database',
-        buttons: ['Ok']
-      }).present();
-    });
   }
 
-  private openPostDetailPage(post: Post): void {
-    this.navCtrl.push(PostDetailsPage, {
-      post: post
-    });
+  reg() {
+    this.navCtrl.push(RegisterPage);
+
+  }
+  guest() {
+    this.navCtrl.push(FrontPage);
+
+
   }
 }

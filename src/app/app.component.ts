@@ -5,6 +5,8 @@ import {Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {HomePage} from '../pages/home/home';
+
+
 import {CreatePostPage} from '../pages/create-post/create-post';
 
 @Component({
