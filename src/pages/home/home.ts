@@ -26,8 +26,6 @@ export class HomePage {
 
   }
   guest() {
-    this.navCtrl.push(FrontPage);
-
-
+    this.navCtrl.setRoot(FrontPage, {}, {animate: true, direction: 'forward'});
   }
 }

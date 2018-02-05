@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {FrontPage} from "../front/front";
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the LoginPage page.
@@ -28,7 +29,7 @@ export class LoginPage {
     this.fire.auth.signInAndRetrieveDataWithEmailAndPassword(this.user.value,this.pass.value)
       .then(data => {
         console.log('got some data', this.fire.auth.currentUser);
-        this.navCtrl.push(FrontPage);
+        this.navCtrl.setRoot(FrontPage, {}, {animate: true, direction: 'forward'});
       })
       .catch(error =>{
         console.log('error ', error);
