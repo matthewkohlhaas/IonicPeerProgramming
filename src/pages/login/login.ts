@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {FrontPage} from "../front/front";
 import {HomePage} from "../home/home";
@@ -19,21 +19,24 @@ import {HomePage} from "../home/home";
 export class LoginPage {
   @ViewChild('username')user;
   @ViewChild('password')pass;
-  constructor(private  fire: AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    private fire: AngularFireAuth,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertController: AlertController
+  ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
   signInUser(){
     this.fire.auth.signInAndRetrieveDataWithEmailAndPassword(this.user.value,this.pass.value)
       .then(data => {
-        console.log('got some data', this.fire.auth.currentUser);
         this.navCtrl.setRoot(FrontPage, {}, {animate: true, direction: 'forward'});
       })
       .catch(error =>{
-        console.log('error ', error);
+        this.alertController.create({
+          title: 'Login Failed',
+          subTitle: 'You cannot login with that email and password.',
+          buttons: ['Ok']
+        }).present();
       })
-    console.log('Would sign in with', this.user.value, this.pass.value);
   }
 }

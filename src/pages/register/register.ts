@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireAuth, AngularFireAuthModule} from 'angularfire2/auth';
 /**
  * Generated class for the RegisterPage page.
@@ -18,19 +18,29 @@ export class RegisterPage {
   @ViewChild('username')user;
   @ViewChild('password')pass;
 
-  constructor(private fire: AngularFireAuth , public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    private fire: AngularFireAuth,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertController: AlertController
+  ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
   regUser(){
     this.fire.auth.createUserWithEmailAndPassword(this.user.value,this.pass.value)
-      .then(data => {console.log('got data')})
-      .catch(error => {
-        console.log('got error', error)
+      .then(data => {
+        this.alertController.create({
+          title: 'Registration Successful',
+          subTitle: 'You have successfully registered a new account!',
+          buttons: ['Ok']
+        }).present();
       })
-    console.log('User with password sign in', this.user.value, this.pass.value);
+      .catch(error => {
+        this.alertController.create({
+          title: 'Registration Failed',
+          subTitle: 'A new account could not be registered with that email and password.',
+          buttons: ['Ok']
+        }).present();
+      });
   }
 
 }
